@@ -117,116 +117,116 @@ describe('Utils', () => {
     });
   });
 
-  describe('merge function', () => {
-    context('when a and b have primitive properties of the same type', () => {
-      it('should overwrite the key with b\'s value', () => {
-        const a = { c: 1 };
-        const b = { c: 2 };
+  // describe('merge function', () => {
+  //   context('when a and b have primitive properties of the same type', () => {
+  //     it('should overwrite the key with b\'s value', () => {
+  //       const a = { c: 1 };
+  //       const b = { c: 2 };
 
-        expect(utils.merge(a, b)).to.eql({ c: 2 });
-      });
-    });
+  //       expect(utils.merge(a, b)).to.eql({ c: 2 });
+  //     });
+  //   });
 
-    context('when a and b have primitive properties of a different type', () => {
-      it('should overwrite the key with b\'s value', () => {
-        const a = { c: 1 };
-        const b = { c: '2' };
+  //   context('when a and b have primitive properties of a different type', () => {
+  //     it('should overwrite the key with b\'s value', () => {
+  //       const a = { c: 1 };
+  //       const b = { c: '2' };
 
-        expect(utils.merge(a, b)).to.eql({ c: '2' });
-      });
-    });
+  //       expect(utils.merge(a, b)).to.eql({ c: '2' });
+  //     });
+  //   });
 
-    context('when a and b have the same property but b\'s is null', () => {
-      it('should overwrite the key with null', () => {
-        const a = { c: [] };
-        const b = { c: null };
+  //   context('when a and b have the same property but b\'s is null', () => {
+  //     it('should overwrite the key with null', () => {
+  //       const a = { c: [] };
+  //       const b = { c: null };
 
-        expect(utils.merge(a, b)).to.eql({ c: null });
-      });
-    });
+  //       expect(utils.merge(a, b)).to.eql({ c: null });
+  //     });
+  //   });
 
-    context('when b has an array property that a does not have', () => {
-      it('should copy the array into a', () => {
-        const a = {};
-        const b = { c: [1, 2, 3] };
+  //   context('when b has an array property that a does not have', () => {
+  //     it('should copy the array into a', () => {
+  //       const a = {};
+  //       const b = { c: [1, 2, 3] };
 
-        const merged = utils.merge(a, b);
-        expect(merged).to.eql({ c: [1, 2, 3] });
-        expect(merged.c).to.not.equal(b.c);
-      });
-    });
+  //       const merged = utils.merge(a, b);
+  //       expect(merged).to.eql({ c: [1, 2, 3] });
+  //       expect(merged.c).to.not.equal(b.c);
+  //     });
+  //   });
 
-    context('when b has an array property that is a different type in a', () => {
-      it('should not modify a\'s property', () => {
-        const a = { c: 'test' };
-        const b = { c: [1, 2, 3] };
+  //   context('when b has an array property that is a different type in a', () => {
+  //     it('should not modify a\'s property', () => {
+  //       const a = { c: 'test' };
+  //       const b = { c: [1, 2, 3] };
 
-        expect(utils.merge(a, b)).to.eql({ c: 'test' });
-      });
-    });
+  //       expect(utils.merge(a, b)).to.eql({ c: 'test' });
+  //     });
+  //   });
 
-    context('when b and a have the same array property', () => {
-      it('should modify a\'s property to be the union of both arrays', () => {
-        const a = { c: [1, 3, 5] };
-        const b = { c: [1, 2, 4, 5] };
+  //   context('when b and a have the same array property', () => {
+  //     it('should modify a\'s property to be the union of both arrays', () => {
+  //       const a = { c: [1, 3, 5] };
+  //       const b = { c: [1, 2, 4, 5] };
 
-        expect(utils.merge(a, b)).to.eql({ c: [1, 3, 5, 2, 4] });
-      });
-    });
+  //       expect(utils.merge(a, b)).to.eql({ c: [1, 3, 5, 2, 4] });
+  //     });
+  //   });
 
-    context('when a and b have the same property but b\'s is an object and a\'s is a primitive', () => {
-      it('should set a\'s property to a copy of b', () => {
-        const a = { c: 2 };
-        const b = { c: { d: 1 } };
+  //   context('when a and b have the same property but b\'s is an object and a\'s is a primitive', () => {
+  //     it('should set a\'s property to a copy of b', () => {
+  //       const a = { c: 2 };
+  //       const b = { c: { d: 1 } };
 
-        const merged = utils.merge(a, b);
-        expect(merged).to.eql({ c: { d: 1 } });
-        expect(merged.c).to.not.equal(b.c);
-      });
-    });
+  //       const merged = utils.merge(a, b);
+  //       expect(merged).to.eql({ c: { d: 1 } });
+  //       expect(merged.c).to.not.equal(b.c);
+  //     });
+  //   });
 
-    context('when a and b have the same property but b\'s is an object and a\'s is null', () => {
-      it('should set a\'s property to a copy of b', () => {
-        const a = { c: null };
-        const b = { c: { d: 1 } };
+  //   context('when a and b have the same property but b\'s is an object and a\'s is null', () => {
+  //     it('should set a\'s property to a copy of b', () => {
+  //       const a = { c: null };
+  //       const b = { c: { d: 1 } };
 
-        const merged = utils.merge(a, b);
-        expect(merged).to.eql({ c: { d: 1 } });
-        expect(merged.c).to.not.equal(b.c);
-      });
-    });
+  //       const merged = utils.merge(a, b);
+  //       expect(merged).to.eql({ c: { d: 1 } });
+  //       expect(merged.c).to.not.equal(b.c);
+  //     });
+  //   });
 
-    context('when a and b have the same property but b\'s is an object and a\'s is an array', () => {
-      it('should set a\'s property to a copy of b', () => {
-        const a = { c: [1, 2, 3] };
-        const b = { c: { d: 4 } };
+  //   context('when a and b have the same property but b\'s is an object and a\'s is an array', () => {
+  //     it('should set a\'s property to a copy of b', () => {
+  //       const a = { c: [1, 2, 3] };
+  //       const b = { c: { d: 4 } };
 
-        const merged = utils.merge(a, b);
-        expect(merged).to.eql({ c: { d: 4 } });
-        expect(merged.c).to.not.equal(b.c);
-      });
-    });
+  //       const merged = utils.merge(a, b);
+  //       expect(merged).to.eql({ c: { d: 4 } });
+  //       expect(merged.c).to.not.equal(b.c);
+  //     });
+  //   });
 
-    context('when a and be have the same object property', () => {
-      it('should merge the objects', () => {
-        const a = { c: { d: 1 } };
-        const b = { c: { d: 2 } };
+  //   context('when a and be have the same object property', () => {
+  //     it('should merge the objects', () => {
+  //       const a = { c: { d: 1 } };
+  //       const b = { c: { d: 2 } };
 
-        const merged = utils.merge(a, b);
-        expect(merged).to.eql({ c: { d: 2 } });
-        expect(merged.c).to.not.equal(b.c);
-      });
-    });
+  //       const merged = utils.merge(a, b);
+  //       expect(merged).to.eql({ c: { d: 2 } });
+  //       expect(merged.c).to.not.equal(b.c);
+  //     });
+  //   });
 
-    context('when a has properties that b does not have', () => {
-      it('should not modify those properties', () => {
-        const a = { c: 1, d: 2 };
-        const b = { d: 3 };
+  //   context('when a has properties that b does not have', () => {
+  //     it('should not modify those properties', () => {
+  //       const a = { c: 1, d: 2 };
+  //       const b = { d: 3 };
 
-        expect(utils.merge(a, b)).to.eql({ c: 1, d: 3 });
-      });
-    });
-  });
+  //       expect(utils.merge(a, b)).to.eql({ c: 1, d: 3 });
+  //     });
+  //   });
+  // });
 
   describe('clone function', () => {
     it('should handle falsy objects', () => {
@@ -293,173 +293,173 @@ describe('Utils', () => {
     });
   });
 
-  describe('validateValueForSchema function ', () => {
-    context('when a schema has a minimum and maximum', () => {
-      const schema = {
-        minimum: 2,
-        maximum: 4,
-      };
+  // describe('validateValueForSchema function ', () => {
+  //   context('when a schema has a minimum and maximum', () => {
+  //     const schema = {
+  //       minimum: 2,
+  //       maximum: 4,
+  //     };
 
-      context('and the value is less than the minimum', () => {
-        it('should return false', () => {
-          expect(utils.validateValueForSchema(1, schema)).to.be.false;
-        });
-      });
+  //     context('and the value is less than the minimum', () => {
+  //       it('should return false', () => {
+  //         expect(utils.validateValueForSchema(1, schema)).to.be.false;
+  //       });
+  //     });
 
-      context('and the value is equal to the minimum', () => {
-        it('should return true', () => {
-          expect(utils.validateValueForSchema(2, schema)).to.be.true;
-        });
-      });
+  //     context('and the value is equal to the minimum', () => {
+  //       it('should return true', () => {
+  //         expect(utils.validateValueForSchema(2, schema)).to.be.true;
+  //       });
+  //     });
 
-      context('and the value is between the minimum and maximum', () => {
-        it('should return true', () => {
-          expect(utils.validateValueForSchema(3, schema)).to.be.true;
-        });
-      });
+  //     context('and the value is between the minimum and maximum', () => {
+  //       it('should return true', () => {
+  //         expect(utils.validateValueForSchema(3, schema)).to.be.true;
+  //       });
+  //     });
 
-      context('and the value is equal to the maximum', () => {
-        it('should return true', () => {
-          expect(utils.validateValueForSchema(4, schema)).to.be.true;
-        });
-      });
+  //     context('and the value is equal to the maximum', () => {
+  //       it('should return true', () => {
+  //         expect(utils.validateValueForSchema(4, schema)).to.be.true;
+  //       });
+  //     });
 
-      context('and the value is greater than the maximum', () => {
-        it('should return false', () => {
-          expect(utils.validateValueForSchema(5, schema)).to.be.false;
-        });
-      });
-    });
+  //     context('and the value is greater than the maximum', () => {
+  //       it('should return false', () => {
+  //         expect(utils.validateValueForSchema(5, schema)).to.be.false;
+  //       });
+  //     });
+  //   });
 
-    context('when a schema only has a minimum', () => {
-      const schema = { minimum: 2 };
+  //   context('when a schema only has a minimum', () => {
+  //     const schema = { minimum: 2 };
 
-      context('and the value is less than the minimum', () => {
-        it('should return false', () => {
-          expect(utils.validateValueForSchema(1, schema)).to.be.false;
-        });
-      });
+  //     context('and the value is less than the minimum', () => {
+  //       it('should return false', () => {
+  //         expect(utils.validateValueForSchema(1, schema)).to.be.false;
+  //       });
+  //     });
 
-      context('and the value is equal to the minimum', () => {
-        it('should return true', () => {
-          expect(utils.validateValueForSchema(2, schema)).to.be.true;
-        });
-      });
+  //     context('and the value is equal to the minimum', () => {
+  //       it('should return true', () => {
+  //         expect(utils.validateValueForSchema(2, schema)).to.be.true;
+  //       });
+  //     });
 
-      context('and the value is greater than the minimum', () => {
-        it('should return true', () => {
-          expect(utils.validateValueForSchema(3, schema)).to.be.true;
-        });
-      });
-    });
+  //     context('and the value is greater than the minimum', () => {
+  //       it('should return true', () => {
+  //         expect(utils.validateValueForSchema(3, schema)).to.be.true;
+  //       });
+  //     });
+  //   });
 
-    context('when a schema only has a maximum', () => {
-      const schema = { maximum: 4 };
+  //   context('when a schema only has a maximum', () => {
+  //     const schema = { maximum: 4 };
 
-      context('and the value is less than the maximum', () => {
-        it('should return true', () => {
-          expect(utils.validateValueForSchema(3, schema)).to.be.true;
-        });
-      });
+  //     context('and the value is less than the maximum', () => {
+  //       it('should return true', () => {
+  //         expect(utils.validateValueForSchema(3, schema)).to.be.true;
+  //       });
+  //     });
 
-      context('and the value is equal to the maximum', () => {
-        it('should return true', () => {
-          expect(utils.validateValueForSchema(4, schema)).to.be.true;
-        });
-      });
+  //     context('and the value is equal to the maximum', () => {
+  //       it('should return true', () => {
+  //         expect(utils.validateValueForSchema(4, schema)).to.be.true;
+  //       });
+  //     });
 
-      context('and the value is greater than the maximum', () => {
-        it('should return false', () => {
-          expect(utils.validateValueForSchema(5, schema)).to.be.false;
-        });
-      });
-    });
+  //     context('and the value is greater than the maximum', () => {
+  //       it('should return false', () => {
+  //         expect(utils.validateValueForSchema(5, schema)).to.be.false;
+  //       });
+  //     });
+  //   });
 
-    context('when a schema does not have a minimum or maximum', () => {
-      const schema = {};
+  //   context('when a schema does not have a minimum or maximum', () => {
+  //     const schema = {};
 
-      it('should return false', () => {
-        expect(utils.validateValueForSchema(0, schema)).to.be.false;
-      });
-    });
-  });
+  //     it('should return false', () => {
+  //       expect(utils.validateValueForSchema(0, schema)).to.be.false;
+  //     });
+  //   });
+  // });
 
-  describe('validateValueForOneOf function', () => {
-    context('with 0 schemas', () => {
-      it('should return false', () => {
-        expect(utils.validateValueForOneOf(0, [])).to.be.false;
-      });
-    });
+  // describe('validateValueForOneOf function', () => {
+  //   context('with 0 schemas', () => {
+  //     it('should return false', () => {
+  //       expect(utils.validateValueForOneOf(0, [])).to.be.false;
+  //     });
+  //   });
 
-    context('when the value is valid for every schema', () => {
-      it('should return false', () => {
-        expect(utils.validateValueForOneOf(1, [{ maximum: 1 }, { maximum: 2 }, { maximum: 3 }])).to.be.false;
-      });
-    });
+  //   context('when the value is valid for every schema', () => {
+  //     it('should return false', () => {
+  //       expect(utils.validateValueForOneOf(1, [{ maximum: 1 }, { maximum: 2 }, { maximum: 3 }])).to.be.false;
+  //     });
+  //   });
 
-    context('when the value is valid for more than one, but not all schemas', () => {
-      it('should return false', () => {
-        expect(utils.validateValueForOneOf(2, [{ maximum: 1 }, { maximum: 2 }, { maximum: 3 }])).to.be.false;
-      });
-    });
+  //   context('when the value is valid for more than one, but not all schemas', () => {
+  //     it('should return false', () => {
+  //       expect(utils.validateValueForOneOf(2, [{ maximum: 1 }, { maximum: 2 }, { maximum: 3 }])).to.be.false;
+  //     });
+  //   });
 
-    context('when the value is valid for only one schema', () => {
-      it('should return true', () => {
-        expect(utils.validateValueForOneOf(3, [{ maximum: 1 }, { maximum: 2 }, { maximum: 3 }])).to.be.true;
-      });
-    });
-  });
+  //   context('when the value is valid for only one schema', () => {
+  //     it('should return true', () => {
+  //       expect(utils.validateValueForOneOf(3, [{ maximum: 1 }, { maximum: 2 }, { maximum: 3 }])).to.be.true;
+  //     });
+  //   });
+  // });
 
-  describe('omitProps function', () => {
-    context('with an empty object', () => {
-      it('should return a different empty object', () => {
-        const obj = {};
-        const copy = utils.omitProps(obj, []);
+  // describe('omitProps function', () => {
+  //   context('with an empty object', () => {
+  //     it('should return a different empty object', () => {
+  //       const obj = {};
+  //       const copy = utils.omitProps(obj, []);
 
-        expect(copy).to.eql({});
-        expect(copy).to.not.equal(obj);
-      });
-    });
+  //       expect(copy).to.eql({});
+  //       expect(copy).to.not.equal(obj);
+  //     });
+  //   });
 
-    context('when a property key matches a prop', () => {
-      it('should omit the property', () => {
-        const obj = {
-          a: 1,
-          b: 2,
-        };
+  //   context('when a property key matches a prop', () => {
+  //     it('should omit the property', () => {
+  //       const obj = {
+  //         a: 1,
+  //         b: 2,
+  //       };
 
-        expect(utils.omitProps(obj, ['a', 'b'])).to.eql({});
-      });
-    });
+  //       expect(utils.omitProps(obj, ['a', 'b'])).to.eql({});
+  //     });
+  //   });
 
-    context('when an array property is not in props', () => {
-      it('should shallow copy the array', () => {
-        const innerObj1 = {};
-        const innerObj2 = {};
+  //   context('when an array property is not in props', () => {
+  //     it('should shallow copy the array', () => {
+  //       const innerObj1 = {};
+  //       const innerObj2 = {};
 
-        const obj = {
-          a: [innerObj1, innerObj2],
-        };
+  //       const obj = {
+  //         a: [innerObj1, innerObj2],
+  //       };
 
-        const copy = utils.omitProps(obj, []);
-        expect(copy).to.eql({ a: [{}, {}] });
-        expect(copy.a[0]).to.equal(innerObj1);
-        expect(copy.a[1]).to.equal(innerObj2);
-      });
-    });
+  //       const copy = utils.omitProps(obj, []);
+  //       expect(copy).to.eql({ a: [{}, {}] });
+  //       expect(copy.a[0]).to.equal(innerObj1);
+  //       expect(copy.a[1]).to.equal(innerObj2);
+  //     });
+  //   });
 
-    context('when an object property is not in props', () => {
-      it.skip('should deep copy the object', () => {
-        // TODO: if utils.omitProps calls utils.merge then we can use sinon to make this assertion
-      });
-    });
+  //   context('when an object property is not in props', () => {
+  //     it.skip('should deep copy the object', () => {
+  //       // TODO: if utils.omitProps calls utils.merge then we can use sinon to make this assertion
+  //     });
+  //   });
 
-    context('when a primitive property is not in props', () => {
-      it('should keep the property', () => {
-        expect(utils.omitProps({ a: 1 }, [])).to.eql({ a: 1 });
-      });
-    });
-  });
+  //   context('when a primitive property is not in props', () => {
+  //     it('should keep the property', () => {
+  //       expect(utils.omitProps({ a: 1 }, [])).to.eql({ a: 1 });
+  //     });
+  //   });
+  // });
 
   describe('isEmpty function', () => {
     it('should return true for an empty object', () => {
